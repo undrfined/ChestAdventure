@@ -28,6 +28,10 @@ jobs:
           name: Download Dependencies
           command: ./gradlew androidDependencies
 
+      - run:
+          name: Compile
+          command: ./gradlew assemble
+
       - save_cache:
           paths:
             - ~/.gradle
@@ -36,3 +40,7 @@ jobs:
       - store_artifacts:
           path: build/reports
           destination: reports
+
+      - run:
+          name: What
+          command: tree
